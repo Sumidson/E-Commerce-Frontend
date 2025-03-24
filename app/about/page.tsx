@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar"
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -22,9 +22,11 @@ export default function AboutPage() {
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {Array.from({ length: 4 }).map((_, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-lg text-center text-black transform transition hover:scale-105">
-              <img
+              <Image
                 src={`https://randomuser.me/api/portraits/men/${index + 10}.jpg`} 
                 alt="Team Member"
+                width={100}
+                height={100}
                 className="w-24 h-24 mx-auto rounded-full border-4 border-yellow-400 mb-4"
               />
               <h3 className="text-2xl font-semibold text-gray-800">Member {index + 1}</h3>
