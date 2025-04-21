@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Home() {
-  // Demo products - simple examples that all link to the products page
+  // Demo products
   const demoProducts = [
     {
       id: 'demo1',
@@ -36,7 +36,6 @@ export default function Home() {
     },
   ];
 
-  // Categories
   const categories = [
     { name: 'Electronics', icon: '📱', link: '/products' },
     { name: 'Clothing', icon: '👕', link: '/products' },
@@ -47,12 +46,27 @@ export default function Home() {
   return (
     <div className="space-y-14">
       {/* Hero Section */}
-      <section className="relative bg-gray-50 rounded-xl overflow-hidden">
-        <div className="container mx-auto px-4 py-16">
+      <section className="relative bg-gray-900 text-white overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
+
+        {/* Hero Content */}
+        <div className="relative z-20 container mx-auto px-4 py-24">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h1 className="text-4xl font-bold mb-4 text-gray-800">Welcome to E-Shop</h1>
-              <p className="text-xl mb-8 text-gray-600">
+              <h1 className="text-4xl font-bold mb-4">Welcome to E-Shop</h1>
+              <p className="text-xl mb-8 text-gray-200">
                 Discover amazing products at unbeatable prices. Shop now and enjoy free shipping on all orders!
               </p>
               <Link 
@@ -128,35 +142,33 @@ export default function Home() {
       {/* Benefits Section */}
       <section className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-            <div className="text-teal-500 text-4xl mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+          {[
+            {
+              title: 'Fast Delivery',
+              description: 'Get your order delivered to your doorstep in 2-3 business days.',
+              iconPath: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
+            },
+            {
+              title: 'Secure Payments',
+              description: 'Your payment information is always protected with top-level security.',
+              iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+            },
+            {
+              title: 'Money Back Guarantee',
+              description: 'Not satisfied with your purchase? Get a full refund within 30 days.',
+              iconPath: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z'
+            }
+          ].map((benefit, index) => (
+            <div key={index} className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+              <div className="text-teal-500 text-4xl mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={benefit.iconPath} />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">{benefit.title}</h3>
+              <p className="text-gray-600">{benefit.description}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Fast Delivery</h3>
-            <p className="text-gray-600">Get your order delivered to your doorstep in 2-3 business days.</p>
-          </div>
-          
-          <div className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-            <div className="text-teal-500 text-4xl mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Secure Payments</h3>
-            <p className="text-gray-600">Your payment information is always protected with top-level security.</p>
-          </div>
-          
-          <div className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-            <div className="text-teal-500 text-4xl mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Money Back Guarantee</h3>
-            <p className="text-gray-600">Not satisfied with your purchase? Get a full refund within 30 days.</p>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -164,8 +176,9 @@ export default function Home() {
       <section className="bg-gray-50 py-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-2 text-gray-800">Stay Updated</h2>
-          <p className="mb-6 max-w-xl mx-auto text-gray-600">Subscribe to our newsletter to receive updates on new products, special offers, and discount information.</p>
-          
+          <p className="mb-6 max-w-xl mx-auto text-gray-600">
+            Subscribe to our newsletter to receive updates on new products, special offers, and discount information.
+          </p>
           <form className="max-w-md mx-auto flex">
             <input
               type="email"
