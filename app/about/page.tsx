@@ -2,20 +2,19 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-gray-100 text-black">
       {/* Container for content */}
-      {/* <Navbar /> */}
       <div className="container mx-auto py-12 px-6">
         
         {/* Meet the Team Section */}
         <div className="text-center">
-          <h2 className="text-5xl font-extrabold">Meet the Team</h2>
+          <h2 className="text-5xl font-extrabold text-[#232f3e]">Meet the Team</h2>
           <p className="text-lg mt-2 opacity-90">The creative minds behind our e-commerce platform</p>
         </div>
 
         {/* Team Name */}
         <div className="text-center mt-6">
-          <h3 className="text-3xl font-bold text-yellow-300">Team Innovators</h3>
+          <h3 className="text-3xl font-bold text-teal-400">Team Innovators</h3>
         </div>
 
         {/* Cards Section */}
@@ -27,7 +26,7 @@ export default function AboutPage() {
                 alt="Team Member"
                 width={100}
                 height={100}
-                className="w-24 h-24 mx-auto rounded-full border-4 border-yellow-400 mb-4"
+                className="w-24 h-24 mx-auto rounded-full border-4 border-teal-400 mb-4"
               />
               <h3 className="text-2xl font-semibold text-gray-800">Member {index + 1}</h3>
               <p className="text-gray-600 mt-2">Expert in e-commerce solutions & innovation.</p>
@@ -37,7 +36,7 @@ export default function AboutPage() {
 
         {/* About the Project Section */}
         <div className="mt-12 bg-white p-8 rounded-lg shadow-xl text-black text-center">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">About Our E-Commerce Platform</h2>
+          <h2 className="text-4xl font-bold text-[#232f3e] mb-4">About Our E-Commerce Platform</h2>
           <p className="text-gray-600">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. We bring you the best online shopping experience with seamless transactions, AI-driven recommendations, and a user-friendly interface.
           </p>
