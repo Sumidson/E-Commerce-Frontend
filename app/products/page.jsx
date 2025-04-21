@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductList from '@/components/products/ProductList';
 import { getAllProducts, searchProducts } from '@/services/productService';
+import Loading from '../loading';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -143,10 +144,7 @@ export default function ProductsPage() {
 
       {/* Product Results */}
       {loading ? (
-        <div className="text-center py-16">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mb-4"></div>
-          <p className="text-xl text-gray-600">Loading products...</p>
-        </div>
+        <Loading />
       ) : error ? (
         <div className="bg-red-50 text-red-600 p-6 rounded-lg text-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
