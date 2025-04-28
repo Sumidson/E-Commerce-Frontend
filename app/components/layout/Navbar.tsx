@@ -23,27 +23,42 @@ export default function Navbar() {
     <nav className="bg-white shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
+          {/* Logo */}
+          <div className="flex-shrink-0">
             <Link href="/" className="text-xl font-bold text-teal-500">
               E-Shop
             </Link>
+          </div>
             
-            <div className="hidden md:flex ml-10 space-x-8">
-              <Link 
-                href="/" 
-                className={`${pathname === '/' ? 'text-teal-500' : 'text-gray-600 hover:text-gray-900'} transition-colors`}
-              >
-                Home
-              </Link>
-              <Link 
-                href="/products" 
-                className={`${pathname === '/products' ? 'text-teal-500' : 'text-gray-600 hover:text-gray-900'} transition-colors`}
-              >
-                Products
-              </Link>
-            </div>
+          {/* Centered Navigation Links */}
+          <div className="hidden md:flex flex-1 justify-center space-x-8">
+            <Link 
+              href="/" 
+              className={`${pathname === '/' ? 'text-teal-500' : 'text-gray-600 hover:text-gray-900'} transition-colors`}
+            >
+              Home
+            </Link>
+            <Link 
+              href="/products" 
+              className={`${pathname === '/products' ? 'text-teal-500' : 'text-gray-600 hover:text-gray-900'} transition-colors`}
+            >
+              Products
+            </Link>
+            <Link 
+              href="/deals" 
+              className={`${pathname === '/deals' ? 'text-teal-500' : 'text-gray-600 hover:text-gray-900'} transition-colors`}
+            >
+              Deals
+            </Link>
+            <Link 
+              href="/about" 
+              className={`${pathname === '/about' ? 'text-teal-500' : 'text-gray-600 hover:text-gray-900'} transition-colors`}
+            >
+              About
+            </Link>
           </div>
           
+          {/* Right Side Icons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link href="/cart" className="text-gray-600 hover:text-gray-900 p-2 relative">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -93,6 +108,7 @@ export default function Navbar() {
             )}
           </div>
           
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <Link href="/cart" className="text-gray-600 hover:text-gray-900 p-2 mr-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,6 +145,20 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(false)}
             >
               Products
+            </Link>
+            <Link 
+              href="/deals" 
+              className={`${pathname === '/deals' ? 'text-teal-500' : 'text-gray-600'} block px-3 py-2 rounded-md text-base font-medium`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Deals
+            </Link>
+            <Link 
+              href="/about" 
+              className={`${pathname === '/about' ? 'text-teal-500' : 'text-gray-600'} block px-3 py-2 rounded-md text-base font-medium`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
             </Link>
             
             {isAuthenticated ? (

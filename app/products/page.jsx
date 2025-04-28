@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { motion } from 'framer-motion';
 import ProductList from '@/components/products/ProductList';
 import { getAllProducts, searchProducts } from '@/services/productService';
 
@@ -89,8 +90,13 @@ export default function ProductsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Hero Banner */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-8 mb-6">
+      {/* Hero Banner with Animation */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-8 mb-6"
+      >
         <h1 className="text-3xl font-bold mb-3">{pageTitle}</h1>
         <p className="text-lg opacity-90">
           {searchTerm 
@@ -100,10 +106,14 @@ export default function ProductsPage() {
               : 'Discover our wide range of high-quality products at great prices'
           }
         </p>
-      </div>
+      </motion.div>
       
-      {/* Filters and Search */}
-      <div className="bg-white rounded-lg shadow-md p-4 mb-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="bg-white rounded-lg shadow-md p-4 mb-6"
+      >
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
           <form onSubmit={handleSearch} className="flex flex-1 max-w-md">
             <input
@@ -139,24 +149,36 @@ export default function ProductsPage() {
             </select>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Product Results */}
+      {/* Product Results with Animation */}
       {loading ? (
-        <div className="text-center py-16">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center py-16"
+        >
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mb-4"></div>
           <p className="text-xl text-gray-600">Loading products...</p>
-        </div>
+        </motion.div>
       ) : error ? (
-        <div className="bg-red-50 text-red-600 p-6 rounded-lg text-center">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="bg-red-50 text-red-600 p-6 rounded-lg text-center"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <p className="text-xl font-semibold mb-2">Error</p>
           <p>{error}</p>
-        </div>
+        </motion.div>
       ) : products.length === 0 ? (
-        <div className="bg-gray-50 text-center py-16 rounded-lg">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="bg-gray-50 text-center py-16 rounded-lg"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto mb-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -166,12 +188,16 @@ export default function ProductsPage() {
               ? `We couldn't find any products matching "${searchTerm}". Try a different search term or browse our categories.`
               : 'There are no products available at the moment. Please check back later.'}
           </p>
-        </div>
+        </motion.div>
       ) : (
-        <>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <p className="text-gray-600 mb-4">Showing {products.length} products</p>
           <ProductList products={products} />
-        </>
+        </motion.div>
       )}
     </div>
   );
