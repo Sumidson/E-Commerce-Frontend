@@ -53,7 +53,7 @@ export default function Home() {
     { name: 'Sports', icon: '⚽', link: '/products', description: 'Gear for every sport and activity' },
   ];
 
-  interface SubscribeEvent extends React.FormEvent<HTMLFormElement> {}
+type SubscribeEvent = React.FormEvent<HTMLFormElement>;
 
   const handleSubscribe = (event: SubscribeEvent): void => {
     event.preventDefault();
@@ -140,7 +140,7 @@ export default function Home() {
                   className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold transition-colors inline-flex items-center space-x-2 shadow-lg hover:shadow-xl"
                 >
                   <ShoppingCart size={18} />
-                  <span>Shop All Products</span>
+                  <span className='hover:pointer-cursor z-50'>Shop All Products</span>
                 </Link>
               </motion.div>
             </motion.div>
@@ -195,7 +195,7 @@ export default function Home() {
             Browse our wide selection of products by category
           </motion.p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <motion.div key={category.name} variants={itemVariants} whileHover={scaleOnHover}>
                 <Link
                   href={category.link}
@@ -232,7 +232,7 @@ export default function Home() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            {demoProducts.map((product, index) => (
+            {demoProducts.map((product: Product) => (
               <motion.div key={product.id} variants={itemVariants} whileHover={{ y: -10 }}>
                 <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 h-full group">
                   <div className="relative h-64 w-full overflow-hidden">
@@ -370,7 +370,7 @@ export default function Home() {
           className="mb-8 text-center"
         >
           <h2 className="text-3xl font-bold mb-2 text-gray-800">Special Offers</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Limited time deals you don't want to miss</p>
+          <p className="text-gray-600 max-w-2xl mx-auto">Limited time deals you dont want to miss</p>
         </motion.div>
         <div className="relative overflow-hidden py-4">
           <div className="flex space-x-6 animate-marquee">
